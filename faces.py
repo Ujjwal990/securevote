@@ -1,8 +1,8 @@
-import cv2
-import numpy as np
-import face_recognition  # install using command       pip install face_recognition 
+import cv2              #install opencv-python
+import numpy as np      #install numpy
+import face_recognition  # install using command       pip install face_recognition     but before it install cmake
 import os
-import streamlit as st
+import streamlit as st      # Installing streamlit is very important
 
 st.title("Face Recognition System")
 run = st.checkbox('Run')
