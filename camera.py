@@ -11,5 +11,6 @@ while run:
     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)  #COLOR_BGR2RGB is converting BGR format to RGB format video/image
     Frame_Window.image(frame)
 else:
-    st.write('cannot take input from camera')
+    st.write('cannot take input from camera') 
+#testing 
 
