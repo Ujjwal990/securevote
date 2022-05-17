@@ -12,5 +12,5 @@ while run:
     Frame_Window.image(frame)
 else:
     st.write('cannot take input from camera') 
-#testing 
+#testing  
 
