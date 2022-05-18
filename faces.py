@@ -1,7 +1,7 @@
 import cv2              #install opencv-python
 import numpy as np      #install numpy
-import face_recognition  # install using command       pip install face_recognition     but before it install cmake
-import os
+import face_recognition  # install using command       pip install face_recognition     but before it install cmake         install dlib using pip install https://github.com/jloh02/dlib/releases/download/v19.22/dlib-19.22.99-cp310-cp310-win_amd64.whl   (This is compatible with python 3.10 version)
+import os   #This is python's standard library, no need to install seperately
 import streamlit as st      # Installing streamlit is very important
 
 st.title("Face Recognition System")
