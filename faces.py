@@ -71,31 +71,28 @@ while run:
     encodeCurrentFrame = face_recognition.face_encodings(faces, facesCurrentFrame)
 
     for encodeFace, faceLoc in zip(encodeCurrentFrame, facesCurrentFrame):
-        matches = face_recognition.compare_faces(encodeListKnown, encodeFace)
-        faceDis = face_recognition.face_distance(encodeListKnown, encodeFace)
-        # print(matches, faceDis)
+        matches = face_recognition.compare_faces(encodeListKnown, encodeFace)       #it return a boolean value i.e. True or False
+        faceDis = face_recognition.face_distance(encodeListKnown, encodeFace)       #It denoted the dissimilarity between two faces
 
         matchIndex = np.argmin(faceDis)
-        # print (matchIndex)
         if matches[matchIndex]:
             name = personName[matchIndex]
             y1, x2, y2, x1 = faceLoc
             y1, x2, y2, x1 = y1*4, x2*4, y2*4, x1*4
-            if(matches):
-                cv2.rectangle(frame, (x1,y1),(x2,y2),(0,255,0), 2)
-            if(matches == False):
-                cv2.rectangle(frame, (x1,y1),(x2,y2),(255,0,0), 2)
-                
+
+            cv2.rectangle(frame, (x1,y1),(x2,y2),(0,255,0), 2)   
             cv2.rectangle(frame, (x1, y2-35), (x2,y2), (0,255,0), cv2.FILLED)
             
             cv2.putText(frame, name, (x1 + 6, y2 - 6), cv2.FONT_HERSHEY_TRIPLEX , 1, (0,0,0), 1)
             cv2.putText(frame, f"{round(faceDis[0], 2)}", (x1,y1), cv2.FONT_HERSHEY_TRIPLEX , 1, (255,128,0), 1)
+            cv2.putText(frame, f"match found", (x1+65,y1-10), cv2.FONT_HERSHEY_TRIPLEX , 0.5, (255,255,255), 1)
+
 
     FRAME_WINDOW.image(frame)
 
 with st.container():
     st.write("---")
-    st.write("-----")
+    st.write("---")
     left_column, right_column = st.columns(2)
     with left_column:
         st.header("How it works")
