@@ -1,5 +1,5 @@
 import json
-import cv2              #install opencv-python
+import cv2              #pip install opencv-python
 import numpy as np      #install numpy
 import face_recognition  # install using command  \\\\\     pip install face_recognition  \\\\\   but before it install cmake      \\\\   install dlib using pip install https://github.com/jloh02/dlib/releases/download/v19.22/dlib-19.22.99-cp310-cp310-win_amd64.whl   (This is compatible with python 3.10 version)
 import os   #This is python's standard library, no need to install seperately
@@ -22,7 +22,7 @@ def local_css(file_name):   #using local css
 local_css("style/style.css")
 
 
-st.title("*Welcome to Face Recognition System* ")
+st.title("*Welcome to voting Booth*")
 
 run = st.checkbox('  START / STOP recognition')
 st.markdown('It is $$ Really Cool$$.')
@@ -53,13 +53,18 @@ def faceEncodings(images):
     encodeList = []
     for img in images:
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        en = face_recognition.face_encodings(img)
+        if len(en) > 0 :
+            print('face encoded successfully')
+        else:
+            print('no faces found in the image!')
         encode = face_recognition.face_encodings(img)[0]
         encodeList.append(encode)
     return encodeList
 
 encodeListKnown = faceEncodings(images)
 
-camera = cv2.VideoCapture(1)
+camera = cv2.VideoCapture(1)        #Here 1 indicates that my secondary camera will be accessed whereas 0 will indicate the usage of primary camera of the system
 
 while run:
     ret, frame = camera.read()
