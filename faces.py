@@ -1,4 +1,3 @@
-import json
 import cv2              #pip install opencv-python
 import numpy as np      #install numpy
 import face_recognition  # install using command  \\\\\     pip install face_recognition  \\\\\   but before it install cmake      \\\\   install dlib using pip install https://github.com/jloh02/dlib/releases/download/v19.22/dlib-19.22.99-cp310-cp310-win_amd64.whl   (This is compatible with python 3.10 version)
@@ -8,6 +7,7 @@ import streamlit as st      # Installing streamlit is very important
                             #pip install requests
 import requests
 from streamlit_lottie import st_lottie
+from datetime import datetime
 # from PIL import Image
 st. set_page_config(layout="wide")
 def load_lottieurl(url):
@@ -66,6 +66,19 @@ encodeListKnown = faceEncodings(images)
 
 camera = cv2.VideoCapture(1)        #Here 1 indicates that my secondary camera will be accessed whereas 0 will indicate the usage of primary camera of the system
 
+def voteEntry(name):
+    with open('voteRecords.csv', 'r+') as f:
+        myDataList = f.readlines()
+        nameList =[]
+        for line in myDataList:
+            entry = line.split(',')
+            nameList.append(entry[0])
+        if name not in nameList:
+            time_now = datetime.now()
+            tStr = time_now.strftime('%H:%M:%S')
+            dStr = time_now.strftime('%d/%m/%Y')
+            f.writelines(f'\n{name},{tStr},{dStr}')
+
 while run:
     ret, frame = camera.read()
     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -92,6 +105,7 @@ while run:
             cv2.putText(frame, f"{round(faceDis[0], 2)}", (x1,y1), cv2.FONT_HERSHEY_TRIPLEX , 1, (255,128,0), 1)
             cv2.putText(frame, f"match found", (x1+65,y1-10), cv2.FONT_HERSHEY_TRIPLEX , 0.5, (255,255,255), 1)
 
+            voteEntry(name)
 
     FRAME_WINDOW.image(frame)
 
