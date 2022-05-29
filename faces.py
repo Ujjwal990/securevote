@@ -64,7 +64,7 @@ if authentication_status:
     # st.write(":smile:"*4)
 
     FRAME_WINDOW = st.image([])
-    path = 'photos'  #images is the name of the folder where images are kept
+    path = 'photos'  #photos is the name of the folder where images are kept
     images = []
     personName = []
     myList = os.listdir(path) #myList will now collect the names of all the files present in the path directory
@@ -116,7 +116,7 @@ if authentication_status:
 
         for encodeFace, faceLoc in zip(encodeCurrentFrame, facesCurrentFrame):
             matches = face_recognition.compare_faces(encodeListKnown, encodeFace)       #it return a boolean value i.e. True or False
-            faceDis = face_recognition.face_distance(encodeListKnown, encodeFace)       #It denoted the dissimilarity between two faces
+            faceDis = face_recognition.face_distance(encodeListKnown, encodeFace)       #It denotes the dissimilarity between two faces
 
             matchIndex = np.argmin(faceDis)
             if matches[matchIndex]:
