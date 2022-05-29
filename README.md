@@ -54,6 +54,7 @@ This is my email id, you can use your email Id to receive the form's data.
 ![Face Recognised](https://github.com/Ujjwal990/securevote/blob/master/FaceRecognisedSS.jpg)
 ![Contact Us Form](https://github.com/Ujjwal990/securevote/blob/master/ContactUsFormSS.jpg)
 ![Form Received by developer](https://github.com/Ujjwal990/securevote/blob/master/ContactUsFormReceivedByDeveloper.jpg)
+![Details of Recognised Voters](https://github.com/Ujjwal990/securevote/blob/master/recordsCSVss.jpg)
 
 
 ## 🚀 About Me
