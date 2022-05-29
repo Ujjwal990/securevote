@@ -1,11 +1,8 @@
 
 # Securevote
 
-<<<<<<< HEAD
-This project makes use of opencv library to authenticate the faces of people and let them proceed for voting, adding one more layer of security
-=======
 This project makes use of opencv library to authenticate the faces of people and let them go for vote, adding one more layer of security
->>>>>>> 7d91100c8bea3114a5dfcb261e1fcdd66e2aad03
+
 
 
 
