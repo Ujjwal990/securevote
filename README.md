@@ -28,9 +28,9 @@ pip install https://github.com/jloh02/dlib/releases/download/v19.22/dlib-19.22.9
 ## Take care about
 
 #### To run the project write command
-open faces.py file in vs code and write the below command
+open index.py file in vs code and write the below command
 ```
-streamlit run faces.py
+streamlit run index.py
 ```
 #### In faces.py in line no. 93 
 ```camera = cv2.VideoCapture(1)``` 
