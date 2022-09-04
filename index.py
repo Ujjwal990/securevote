@@ -90,7 +90,7 @@ if authentication_status:
 
     encodeListKnown = faceEncodings(images)
 
-    camera = cv2.VideoCapture(1)        #Here 1 indicates that my secondary camera will be accessed whereas 0 will indicate the usage of primary camera of the system
+    camera = cv2.VideoCapture(0)        #Here 1 indicates that my secondary camera will be accessed whereas 0 will indicate the usage of primary camera of the system
 
     def voteEntry(name):
         with open('voteRecords.csv', 'r+') as f:
