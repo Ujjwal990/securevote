@@ -23,7 +23,20 @@ file_path = Path(__file__).parent / "safe_passwords.pkl"
 with file_path.open("rb") as file:
     hashed_passwords = pickle.load(file)
 
-authenticator = stauth.Authenticate(names, usernames, hashed_passwords, "sales_dashboard", "abcdef", cookie_expiry_days = 30)
+credentials = {
+    "usernames":{
+        usernames[0]:{
+            "name":names[0],
+            "password":hashed_passwords[0]
+            },
+        usernames[1]:{
+            "name":names[1],
+            "password":hashed_passwords[1]
+            }            
+        }
+    }
+
+authenticator = stauth.Authenticate(credentials, "sales_dashboard", "abcdef", cookie_expiry_days = 30)
 
 name, authentication_status, username = authenticator.login("Login", "main")
 
@@ -163,10 +176,7 @@ if authentication_status:
         st.write("##")
 
         contact_form = """
-        
-
-        <form action="https://formsubmit.co/capitalgabru@gmail.com
-    " autocomplete="off" method = "POST">
+        <form action="https://formsubmit.co/capitalgabru@gmail.com" autocomplete="off" method = "POST">
                 <h3 class="title">Contact us</h3>
                 <div class="input-container">
                 <input type="text" name="name" class="input" />
@@ -190,8 +200,8 @@ if authentication_status:
                 </div>
                 <input type="submit" value="Send" class="btn" />
         </form>
-
         """
+        
         left_column, right_column = st.columns(2)
         with left_column:
             st.markdown(contact_form, unsafe_allow_html=True)
